@@ -1,13 +1,22 @@
 import os
 
-fail_html = "index.html"
+def test():
+    file_name = "index.html"
+    print(f"Memulakan semakan pada: {file_name}")
 
-if os.path.exists(fail_html):
-    with open(fail_html, "r", encoding="utf-8") as f:
+    # Menyemak jika fail index.html wujud dalam folder
+    if os.path.exists(file_name):
+        print("PENGESAHAN: Fail index.html ditemui.")
+    else:
+        print("RALAT: Fail index.html tidak dijumpai!")
+        exit(1)
+
+    # Menyemak jika fungsi alert() telah ditulis dalam kod
+    with open(file_name, "r") as f:
         kandungan = f.read()
         if "alert(" in kandungan:
-            print("✅ Fail HTML wujud dan fungsi alert() dijumpai.")
+            print("PENGESAHAN: Fungsi alert dikesan dalam kod.")
         else:
-            print("❌ Fungsi alert() tidak dijumpai dalam HTML.")
-else:
-    print("❌ Fail index.html tidak wujud.")
+            print("RALAT: Fungsi alert tidak dijumpai!")
+            exit(1)
+
